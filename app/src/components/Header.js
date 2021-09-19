@@ -4,7 +4,7 @@ import {RadioButton, Card} from 'react-native-paper';
 
 const Header = ({title}) => {
   return (
-    <Card elevation={5} style={styles.cardContainer}>
+    <Card style={styles.cardContainer}>
       <View style={styles.container}>
         <Text style={styles.textStyle}>{title}</Text>
       </View>
@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     // flex:0.2,
     backgroundColor: '#fff',
     zIndex: 5,
+    elevation:15
+    
   },
   container: {
     paddingTop: 40,
