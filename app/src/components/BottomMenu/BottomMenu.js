@@ -4,8 +4,8 @@ import {
   BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
 import {TabBar} from './TabBar';
-import {Listings} from '../../screens/Listings';
-import {Calendar} from '../../screens/Calendar';
+import {Listings} from '../../design/Listings';
+import {Calendar} from '../../design/Calendar';
 import {useSafeArea} from 'react-native-safe-area-context';
 import {View} from 'react-native';
 
