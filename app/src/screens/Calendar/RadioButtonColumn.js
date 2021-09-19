@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   lineStyle: {
     backgroundColor: grey,
     width: 2,
-    height: '100%',
+    height: '90%',
     position: 'absolute',
-    top: '50%',
+    top: '55%',
   },
 });

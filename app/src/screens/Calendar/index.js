@@ -1,13 +1,11 @@
 import React, {useState, useCallback} from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList,StatusBar} from 'react-native';
 import {RadioButton, Card} from 'react-native-paper';
 import {red, orange, purple, green, darkPurple} from '../../styles';
 import DayWithDate from './DayWithDate';
-import DayHeader from './DayHeader';
-import RadioButtonColumn from './RadioButtonColumn';
-import TimeColumn from './TimeColumn';
-import CardColumn from './CardColumn';
+
 import Header from '../../components/Header';
+import DaysList from './DaysList';
 
 export const Calendar = ({route}) => {
   const [daysData, setDaysData] = useState([
@@ -54,52 +52,17 @@ export const Calendar = ({route}) => {
     },
   ]);
 
-  useCallback(status => {
-    callback;
-  }, []);
 
-  const checkStatus = status => {
-    if (status == 'Approved') {
-      return green;
-    } else if (status == 'Pending') {
-      return orange;
-    } else if (status == 'Buyer Reschedule') {
-      return purple;
-    }
-  };
 
   const renderItem = ({item}) => {
-    // const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-    // const color = item.id === selectedId ? 'white' : 'black';
-
     return (
-      <View style={{flex: 1, marginHorizontal: 15}}>
-        <DayHeader dayName={item.dayName} date={item.date}></DayHeader>
-        {item.cardsData.map((data, index, array) => {
-          return (
-            <View key={data.id} style={{flexDirection: 'row'}}>
-              <RadioButtonColumn
-                checkStatus={checkStatus}
-                status={data?.status}
-                index={index}
-                array={array}
-              />
-              <TimeColumn time={data?.time} duration={data?.duration} />
-              <CardColumn
-                name={data?.name}
-                status={data?.status}
-                location={data?.location}
-                checkStatus={checkStatus}
-              />
-            </View>
-          );
-        })}
-      </View>
+     <DaysList item={item}></DaysList>
     );
   };
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor='#fff' barStyle={'dark-content'}></StatusBar>
       <Header title={route?.name}></Header>
       <View style={styles.calendarContainer}>
         <View style={styles.monthContainer}>
@@ -113,14 +76,14 @@ export const Calendar = ({route}) => {
         <DayWithDate day="Fri" date="09"></DayWithDate>
         <DayWithDate day="Sat" date="10"></DayWithDate>
       </View>
-      <View style={{flex: 1}}>
+      
         <FlatList
           data={daysData}
           renderItem={renderItem}
           keyExtractor={item => item.id}
-          // extraData={selectedId}
+          scrollEnabled={true}
+          contentContainerStyle={{minHeight:'100%'}}
         />
-      </View>
     </View>
   );
 };
@@ -136,6 +99,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   calendarContainer: {
+    // flex:0.15,
     backgroundColor: '#F6F8FA',
     flexDirection: 'row',
   },

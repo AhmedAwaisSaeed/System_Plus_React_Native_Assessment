@@ -1,9 +1,10 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View,StatusBar} from 'react-native';
 
 export const Listings = ({route}) => {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor='#fff' barStyle={'dark-content'}></StatusBar>
       <View>
         <Text>{route.name}</Text>
       </View>

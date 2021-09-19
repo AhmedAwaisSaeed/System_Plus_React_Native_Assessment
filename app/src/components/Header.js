@@ -16,11 +16,12 @@ export default Header;
 
 const styles = StyleSheet.create({
   cardContainer: {
+    // flex:0.2,
     backgroundColor: '#fff',
     zIndex: 5,
   },
   container: {
-    paddingTop: 80,
+    paddingTop: 40,
     paddingBottom: 10,
     justifyContent: 'center',
     alignItems: 'center',
